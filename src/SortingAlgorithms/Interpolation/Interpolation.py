@@ -64,7 +64,7 @@ def interpolation_search(sorted_collection, item):
     except ValueError:
         # sys.exit("Sequence must be ascending sorted to apply binary search")
         print("\nSequence must be ascending sorted to apply binary search")
-        return -1
+        return -1, 0
     loop = 0
     if len(sorted_collection) == 0:
         return 0, loop
@@ -73,7 +73,6 @@ def interpolation_search(sorted_collection, item):
 
     while left <= right:
         loop = loop + 1
-        # print(loop)
         # avoid divided by 0 during interpolation
         if sorted_collection[left].salary == sorted_collection[right].salary:
             if sorted_collection[left].salary == item:
@@ -188,6 +187,9 @@ def __assert_sorted(collection):
     return True
 
 
+"""
+For testing algorithms
+"""
 if __name__ == "__main__":
     import sys
 

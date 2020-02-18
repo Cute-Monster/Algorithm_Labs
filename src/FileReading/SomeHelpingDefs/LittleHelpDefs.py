@@ -6,7 +6,7 @@ def parse_data_to_array_objects(data, file_class):
     Filling array of objects with data taken from file
     :param data:
     :param file_class:
-    :return: array [array consisting objects with data taken from file]
+    :return: array: [array consisting objects with data taken from file]
     """
     array = []
     for line in data:
@@ -29,7 +29,7 @@ def sorted_table_file(file, array):
     and writing this sorted array to file
     :param file:
     :param array:
-    :return: array [sorted by salary]
+    :return: array: [sorted by salary]
     """
     array.sort(key=lambda x: x.salary, reverse=False)
     for item in array:

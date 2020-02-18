@@ -1,5 +1,5 @@
 class File:
-    def __init__(self, name, salary, position, working_years, kids, less="*", more="*"):
+    def __init__(self, name, salary, position, working_years, kids, less=None, more=None):
         self.name = name
         self.salary = int(salary)
         self.position = position

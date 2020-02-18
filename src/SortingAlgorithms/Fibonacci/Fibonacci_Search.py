@@ -87,6 +87,9 @@ def FibonacciSearchNormalArray(lys, val):
     return -1, loop_counter
 
 
+"""
+Testing values
+"""
 if __name__ == '__main__':
-    listedarray = [1, 152, 14]
-    print(FibonacciSearchNormalArray([], 152))
+    listed_array = [1, 152, 14]
+    print(FibonacciSearchNormalArray(listed_array, 152))

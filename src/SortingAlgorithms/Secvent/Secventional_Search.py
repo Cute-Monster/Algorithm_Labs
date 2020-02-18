@@ -1,13 +1,14 @@
 def Secventional_Search(array, value):
-    index = 0
+    loop = 0
     if len(array) is 0:
-        return index
+        return 0, loop
     for idx, element in enumerate(array):
+        loop = loop + 1
         if element.salary == value:
             index = idx
-            return index
-    index = -1
-    return index
+            return index, loop
+    loop = 0
+    return -1, loop
 
 
 def Secventional_Search_in_normal_array(array, value):

@@ -65,18 +65,21 @@ def interpolation_search(sorted_collection, item):
         # sys.exit("Sequence must be ascending sorted to apply binary search")
         print("\nSequence must be ascending sorted to apply binary search")
         return -1
+    loop = 0
     if len(sorted_collection) == 0:
-        return 0
+        return 0, loop
     left = 0
     right = len(sorted_collection) - 1
 
     while left <= right:
+        loop = loop + 1
+        # print(loop)
         # avoid divided by 0 during interpolation
         if sorted_collection[left].salary == sorted_collection[right].salary:
             if sorted_collection[left].salary == item:
-                return left
+                return left, loop
             else:
-                return -1
+                return -1, 0
 
         point = left + ((item - sorted_collection[left].salary) * (right - left)) // (
             sorted_collection[right].salary - sorted_collection[left].salary
@@ -85,11 +88,11 @@ def interpolation_search(sorted_collection, item):
         # out of range check
         if point < 0 or point >= len(sorted_collection):
             print("\n\tInterpolation Search --> Out Of Range Check ")
-            return -1
+            return -1, 0
 
         current_item = sorted_collection[point]
         if current_item.salary == item:
-            return point
+            return point, loop
         else:
             if point < left:
                 right = left
@@ -102,7 +105,8 @@ def interpolation_search(sorted_collection, item):
                     right = point - 1
                 else:
                     left = point + 1
-    return -1
+    loop = 0
+    return -1, loop
 
 
 def interpolation_search_by_recursion(sorted_collection, item, left, right):

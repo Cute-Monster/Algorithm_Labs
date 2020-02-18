@@ -1,12 +1,18 @@
 from termcolor import colored
 
 
-def parse_data_to_array_objects(data, File):
+def parse_data_to_array_objects(data, file_class):
+    """
+    Filling array of objects with data taken from file
+    :param data:
+    :param file_class:
+    :return: array [array consisting objects with data taken from file]
+    """
     array = []
     for line in data:
         words = line.split()
         array.append(
-            File(
+            file_class(
                 words[0],
                 words[1],
                 words[2],
@@ -18,7 +24,13 @@ def parse_data_to_array_objects(data, File):
 
 
 def sorted_table_file(file, array):
-    # file = open("../../ResultTableFiles/SortedFiles/SortedBySalary.txt", "w")
+    """
+    Sorting given array of objects by salary
+    and writing this sorted array to file
+    :param file:
+    :param array:
+    :return: array [sorted by salary]
+    """
     array.sort(key=lambda x: x.salary, reverse=False)
     for item in array:
         file.writelines("{}\t\t{}\t\t{}\t\t{}\t\t{}\n".format(item.name, str(item.salary), item.position,
@@ -28,6 +40,14 @@ def sorted_table_file(file, array):
 
 
 def printing_output(name, array, index, search_value):
+    """
+    Writing found value to the console which is colored
+    :param name:
+    :param array:
+    :param index:
+    :param search_value:
+    :return:
+    """
     print(colored("\n{}".format(name), "cyan") + " search result:")
     if index is -1:
         print(colored("\tThere are no records with value ", "red") +

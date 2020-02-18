@@ -169,20 +169,21 @@ def binary_search(sorted_collection, item):
         print("\nSequence must be ascending sorted to apply binary search")
         return -1
     if len(sorted_collection) == 0:
-        return 0
+        return 0, 0
     left = 0
     right = len(sorted_collection) - 1
-
+    loop = 0
     while left <= right:
+        loop = loop + 1
         midpoint = left + (right - left) // 2
         current_item = sorted_collection[midpoint]
         if current_item.salary == item:
-            return midpoint
+            return midpoint, loop
         elif item < current_item.salary:
             right = midpoint - 1
         else:
             left = midpoint + 1
-    return -1
+    return -1, 0
 
 
 

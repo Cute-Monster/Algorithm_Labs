@@ -54,6 +54,8 @@ def FibonacciSearchNormalArray(lys, val):
     fibM_minus_2 = 0
     fibM_minus_1 = 1
     fibM = fibM_minus_1 + fibM_minus_2
+    if len(lys) is 0:
+        return 0
     while fibM < len(lys):
         fibM_minus_2 = fibM_minus_1
         fibM_minus_1 = fibM
@@ -78,4 +80,5 @@ def FibonacciSearchNormalArray(lys, val):
 
 
 if __name__ == '__main__':
-    print(FibonacciSearchNormalArray([1, 54, 2, 0, 152, 10, 7], 152))
+    listedarray = [1, 152, 14]
+    print(FibonacciSearchNormalArray([], 152))

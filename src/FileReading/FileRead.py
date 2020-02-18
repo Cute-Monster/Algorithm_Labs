@@ -1,49 +1,30 @@
 # import socketserver
 from src.FileClass.FileClass import File
-from src.SortingAlgorithms import Fibonacci
-
-
-def get_data_from_file():
-    with open("../ResultTableFiles/Result", "r+", ) as f:
-        data = f.readlines()
-    array = []
-    for line in data:
-        words = line.split()
-        array.append(
-            File(
-                words[0],
-                words[1],
-                words[2],
-                words[3],
-                words[4],
-            )
-        )
-    f.close()
-    return array
-
-
-def sorted_table_file(array):
-    sorted_file = open("../ResultTableFiles/SortedFiles/SortedBy{}.txt".format("Salary"), "w")
-    array.sort(key=lambda x: x.salary, reverse=False)
-    for item in file_array:
-        sorted_file.writelines("{}\t\t{}\t\t{}\t\t{}\t\t{}\n".format(item.name, str(item.salary), item.position,
-                                                                     str(item.working_years), str(item.kids)))
-    return array
-
+from src.SortingAlgorithms.Fibonacci import Fibonacci_Search
+from src.SortingAlgorithms.Secvent import Secventional_Search
+from src.SortingAlgorithms.Binary import Binary
+from src.SortingAlgorithms.Interpolation import Interpolation
+from src.FileReading.SomeHelpingDefs import LittleHelpDefs as Helpful
 
 if __name__ == "__main__":
+    with open("../ResultTableFiles/Result", "r") as file:
+        data = file.readlines()
+    sorted_file = open("../ResultTableFiles/SortedFiles/SortedBySalary.txt", "w")
 
-    file_array = get_data_from_file()
-    file_array = sorted_table_file(file_array)
+    file_array = Helpful.parse_data_to_array_objects(data, File)
+    file_array = Helpful.sorted_table_file(sorted_file, file_array)
 
-    search_value = int(input("Enter Search Value [ Salary or working years or kids counter ] --> "))
-    Fibonacci_found_value = Fibonacci.Fibonacci_Search.FibonacciSearch(file_array, search_value)
-    if Fibonacci_found_value is -1:
-        print("There are no records with value '{}'".format(search_value))
-    else:
-        print("Found person with value matching to {}".format(search_value))
-        print(file_array[Fibonacci_found_value].name,
-              file_array[Fibonacci_found_value].salary,
-              file_array[Fibonacci_found_value].position,
-              file_array[Fibonacci_found_value].working_years,
-              file_array[Fibonacci_found_value].kids, sep="\t\t")
+    search_value = int(input("Enter Amount of Salary to Search --> "))
+
+    Fibonacci_found_value = Fibonacci_Search.FibonacciSearch(file_array, search_value)
+    Helpful.printing_output("Fibonacci", file_array, Fibonacci_found_value, search_value)
+
+    Secventional_found_value = Secventional_Search.Secventional_Search(file_array, search_value)
+    Helpful.printing_output("Secventional", file_array, Secventional_found_value, search_value)
+
+    Binary_found_value = Binary.binary_search(file_array, search_value)
+    Helpful.printing_output("Binary", file_array, Binary_found_value, search_value)
+
+    Interpolation_found_value = Interpolation.interpolation_search(file_array, search_value)
+    Helpful.printing_output("interpolation", file_array, Interpolation_found_value, search_value)
+

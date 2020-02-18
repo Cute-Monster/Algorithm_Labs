@@ -76,7 +76,7 @@ def interpolation_search(sorted_collection, item):
             if sorted_collection[left].salary == item:
                 return left
             else:
-                return None
+                return -1
 
         point = left + ((item - sorted_collection[left].salary) * (right - left)) // (
             sorted_collection[right].salary - sorted_collection[left].salary
@@ -84,7 +84,7 @@ def interpolation_search(sorted_collection, item):
 
         # out of range check
         if point < 0 or point >= len(sorted_collection):
-            print("Out Of Range Check")
+            print("\n\tInterpolation Search --> Out Of Range Check ")
             return -1
 
         current_item = sorted_collection[point]

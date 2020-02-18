@@ -1,3 +1,6 @@
+from termcolor import colored
+
+
 def parse_data_to_array_objects(data, File):
     array = []
     for line in data:
@@ -25,11 +28,15 @@ def sorted_table_file(file, array):
 
 
 def printing_output(name, array, index, search_value):
-    print("\n{} search result:".format(name))
+    print(colored("\n{}".format(name), "cyan") + " search result:")
     if index is -1:
-        print("\tThere are no records with value '{}' ".format(search_value))
+        print(colored("\tThere are no records with value ", "red") +
+              colored("{} ".format(search_value), "green"))
     else:
-        print("\tFound person with value matching to {} at #{}".format(search_value, index))
+        print(colored("\tFound person with value matching to ", "yellow") +
+              colored("{}".format(search_value), "magenta") +
+              colored(" at ", "yellow") +
+              colored("#{}".format(index+1), "green"))
         print("\t" + array[index].name,
               array[index].salary,
               array[index].position,

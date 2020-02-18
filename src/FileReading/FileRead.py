@@ -1,4 +1,3 @@
-# import socketserver
 from src.FileClass.FileClass import File
 from src.SortingAlgorithms.Fibonacci import Fibonacci_Search
 from src.SortingAlgorithms.Secvent import Secventional_Search
@@ -26,5 +25,5 @@ if __name__ == "__main__":
     Helpful.printing_output("Binary", sorted_file_array, Binary_found_value, search_value)
 
     Interpolation_found_value = Interpolation.interpolation_search(sorted_file_array, search_value)
-    Helpful.printing_output("interpolation", sorted_file_array, Interpolation_found_value, search_value)
+    Helpful.printing_output("Interpolation", sorted_file_array, Interpolation_found_value, search_value)
 

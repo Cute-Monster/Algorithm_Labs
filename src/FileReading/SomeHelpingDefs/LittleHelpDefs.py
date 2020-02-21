@@ -1,4 +1,8 @@
 from termcolor import colored
+import src.SortingAlgorithms.Binary.Binary as BinS
+import src.SortingAlgorithms.Fibonacci.Fibonacci_Search as FibS
+import src.SortingAlgorithms.Interpolation.Interpolation as InterpS
+import src.SortingAlgorithms.Secvent.Secventional_Search as SecvS
 
 
 def parse_data_to_array_objects(data, file_class):
@@ -62,3 +66,19 @@ def printing_output(name, array, index, search_value):
               array[index].position,
               array[index].working_years,
               array[index].kids, sep="\t\t")
+
+
+def algorithms_complexity(obj_array):
+    complexity_array = [0, 0, 0, 0, 0]
+    for item in obj_array:
+        complexity_array[0] = complexity_array[0] + SecvS.Secventional_Search(obj_array, item.salary)[1]
+        complexity_array[1] = complexity_array[1] + InterpS.interpolation_search(obj_array, item.salary)[1]
+        complexity_array[2] = complexity_array[2] + BinS.binary_search(obj_array, item.salary)[1]
+        complexity_array[3] = complexity_array[3] + FibS.FibonacciSearch(obj_array, item.salary)[1]
+    """
+    for idx, item in enumerate(complexity_array):
+        print("#{} is {}".format(idx, item))
+    """
+    for idx, item in enumerate(complexity_array):
+        complexity_array[idx] = item/50
+    return complexity_array

@@ -43,3 +43,10 @@ if __name__ == "__main__":
           str(Binary.binary_search(sorted_file_array, sorted_file_array[random_element].salary)[1]))
     print(Helpful.colored("\t\tInterpolation algorithm steps: ", "magenta") +
           str(Interpolation.interpolation_search(sorted_file_array, sorted_file_array[random_element].salary)[1]))
+    print(Helpful.colored("\tSum of all algorithms loop counters: ", "magenta") +
+          "{}".format(
+              Fibonacci_Search.FibonacciSearch(sorted_file_array, sorted_file_array[random_element].salary)[1] +
+              Secventional_Search.Secventional_Search(sorted_file_array, sorted_file_array[random_element].salary)[1] +
+              Binary.binary_search(sorted_file_array, sorted_file_array[random_element].salary)[1] +
+              Interpolation.interpolation_search(sorted_file_array, sorted_file_array[random_element].salary)[1]
+          ))

@@ -17,7 +17,7 @@
 
 
 from src.FileClass.FileClass import File
-from src.FileReading.SomeHelpingDefs import LittleHelpDefs as Helpful
+from src.SomeHelpingDefs import LittleHelpDefs as Helpful
 import random
 
 if __name__ == "__main__":

@@ -27,14 +27,14 @@ def parse_data_to_array_objects(data, file_class):
     return array
 
 
-def sorted_table_file(file, array):
+def sorted_table_file_creator(array):
     """
     Sorting given array of objects by salary
     and writing this sorted array to file
-    :param file:
     :param array:
     :return: array: [sorted by salary]
     """
+    file = open("../ResultTableFiles/SortedFiles/SortedBySalary.txt", "w")
     array.sort(key=lambda x: x.salary, reverse=False)
     for item in array:
         file.writelines("{}\t\t{}\t\t{}\t\t{}\t\t{}\n".format(item.name, str(item.salary), item.position,

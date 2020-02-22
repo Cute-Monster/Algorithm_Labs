@@ -21,12 +21,11 @@ from src.SomeHelpingDefs import LittleHelpDefs as Helpful
 import random
 
 if __name__ == "__main__":
-    with open("../ResultTableFiles/Result", "r") as file:
+    with open("../../src/ResultTableFiles/Result", "r") as file:
         data = file.readlines()
-    sorted_file = open("../ResultTableFiles/SortedFiles/SortedBySalary.txt", "w")
 
     unsorted_file_array = Helpful.parse_data_to_array_objects(data, File)
-    sorted_file_array = Helpful.sorted_table_file(sorted_file, unsorted_file_array)
+    sorted_file_array = Helpful.sorted_table_file_creator(unsorted_file_array)
 
     search_value = int(input("Enter Amount of Salary to Search --> "))
 
@@ -57,7 +56,7 @@ if __name__ == "__main__":
           str(Helpful.BinS.binary_search(sorted_file_array, sorted_file_array[random_element].salary)[1]))
     print(Helpful.colored("\t\tInterpolation algorithm steps: ", "magenta") +
           str(Helpful.InterpS.interpolation_search(sorted_file_array, sorted_file_array[random_element].salary)[1]))
-    print(Helpful.colored("\tSum of all algorithms loop counters: ", "magenta") +
+    print(Helpful.colored("\t\tSum of all algorithms loop counters: ", "magenta") +
           "{}".format(
               Helpful.FibS.FibonacciSearch(sorted_file_array, sorted_file_array[random_element].salary)[1] +
               Helpful.SecvS.Secventional_Search(sorted_file_array, sorted_file_array[random_element].salary)[1] +
@@ -68,7 +67,7 @@ if __name__ == "__main__":
     Printing algorithms complexity 
     """
     algorithms_complexity = Helpful.algorithms_complexity(sorted_file_array)
-    print(Helpful.colored("Complexity of Algorithms:", "cyan"))
+    print(Helpful.colored("\nComplexity of Algorithms:", "cyan"))
     print(
         Helpful.colored("\tSecventional search algorithm: ", "magenta") + str(algorithms_complexity[0]) +
         Helpful.colored("\n\tInterpolation search algorithm: ", "magenta") + str(algorithms_complexity[1]) +

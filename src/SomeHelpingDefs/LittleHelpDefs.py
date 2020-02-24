@@ -1,8 +1,15 @@
 from termcolor import colored
-import src.SortingAlgorithms.Binary.Binary as BinS
-import src.SortingAlgorithms.Fibonacci.Fibonacci_Search as FibS
-import src.SortingAlgorithms.Interpolation.Interpolation as InterpS
-import src.SortingAlgorithms.Secvent.Secventional_Search as SecvS
+import src.SearchAlgorithms.Binary.Binary as BinS
+import src.SearchAlgorithms.Fibonacci.Fibonacci_Search as FibS
+import src.SearchAlgorithms.Interpolation.Interpolation as InterpS
+import src.SearchAlgorithms.Secvent.Secventional_Search as SecvS
+import src.SortingAlgorithms.Insertion.Insertion as InsS
+import src.SortingAlgorithms.Buble.Buble as BubbleS
+import src.SortingAlgorithms.Quick.Quick as QuickS
+import src.SortingAlgorithms.Merge.Merge as MergeS
+import src.SortingAlgorithms.Shell.Shell as ShellS
+import src.SortingAlgorithms.Selection.Selection as SelS
+import src.SortingAlgorithms.Heap.Heap as HeapS
 
 
 def parse_data_to_array_objects(data, file_class):
@@ -66,6 +73,15 @@ def printing_output(name, array, index, search_value):
               array[index].position,
               array[index].working_years,
               array[index].kids, sep="\t\t")
+
+
+def printing_array(array):
+    for item in array:
+        print("\t" + item.name,
+              item.salary,
+              item.position,
+              item.working_years,
+              item.kids, sep="\t\t")
 
 
 def algorithms_complexity(obj_array):

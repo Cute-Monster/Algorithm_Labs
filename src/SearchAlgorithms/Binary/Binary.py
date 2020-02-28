@@ -165,26 +165,29 @@ def binary_search(sorted_collection, item):
     try:
         __assert_sorted(sorted_collection)
     except ValueError:
-        # sys.exit("Sequence must be ascending sorted to apply binary search")
         print("\nSequence must be ascending sorted to apply binary search")
         return -1
     if len(sorted_collection) == 0:
         return 0, 0
+
     left = 0
     right = len(sorted_collection) - 1
     loop = 0
+
     while left <= right:
         loop = loop + 1
         midpoint = left + (right - left) // 2
         current_item = sorted_collection[midpoint]
         if current_item.salary == item:
+            # loop = loop + 1
             return midpoint, loop
         elif item < current_item.salary:
+            # loop = loop + 1
             right = midpoint - 1
         else:
+            # loop = loop + 1
             left = midpoint + 1
     return -1, 0
-
 
 
 def binary_search_normal_collection(sorted_collection, item):
@@ -313,6 +316,7 @@ def __assert_sorted(collection):
     return True
 
 
+"""
 if __name__ == "__main__":
     import sys
 
@@ -330,3 +334,4 @@ if __name__ == "__main__":
         print(f"{target} found at positions: {result}")
     else:
         print("Not found")
+"""

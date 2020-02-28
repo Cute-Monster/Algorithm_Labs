@@ -30,17 +30,21 @@ def FibonacciSearch(lys, val):
         # print(loop)
         i = min(index + fibM_minus_2, (len(lys) - 1))
         if lys[i].salary < val:
+            # loop = loop + 1
             fibM = fibM_minus_1
             fibM_minus_1 = fibM_minus_2
             fibM_minus_2 = fibM - fibM_minus_1
             index = i
         elif lys[i].salary > val:
+            # loop = loop + 1
             fibM = fibM_minus_2
             fibM_minus_1 = fibM_minus_1 - fibM_minus_2
             fibM_minus_2 = fibM - fibM_minus_1
         else:
+            # loop = loop + 1
             return i, loop
-    if fibM_minus_1 and index < (len(lys) - 1) and lys[index + 1].salary == val:
+    if fibM_minus_1 and index < (len(lys) - 1) and (lys[index + 1].salary == val):
+        loop = loop + 1
         return index + 1, loop
     return -1, loop
 
@@ -90,6 +94,8 @@ def FibonacciSearchNormalArray(lys, val):
 """
 Testing values
 """
+"""
 if __name__ == '__main__':
     listed_array = [1, 152, 14]
     print(FibonacciSearchNormalArray(listed_array, 152))
+"""

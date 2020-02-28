@@ -65,6 +65,7 @@ def interpolation_search(sorted_collection, item):
         # sys.exit("Sequence must be ascending sorted to apply binary search")
         print("\nSequence must be ascending sorted to apply binary search")
         return -1, 0
+
     loop = 0
     if len(sorted_collection) == 0:
         return 0, loop
@@ -75,7 +76,9 @@ def interpolation_search(sorted_collection, item):
         loop = loop + 1
         # avoid divided by 0 during interpolation
         if sorted_collection[left].salary == sorted_collection[right].salary:
+            # loop = loop + 1
             if sorted_collection[left].salary == item:
+                # loop = loop + 1
                 return left, loop
             else:
                 return -1, 0
@@ -91,18 +94,25 @@ def interpolation_search(sorted_collection, item):
 
         current_item = sorted_collection[point]
         if current_item.salary == item:
+            # loop = loop + 1
             return point, loop
         else:
+            # loop = loop + 1
             if point < left:
+                # loop = loop + 1
                 right = left
                 left = point
             elif point > right:
+                # loop = loop + 1
                 left = right
                 right = point
             else:
+                # loop = loop + 1
                 if item < current_item.salary:
+                    # loop = loop + 1
                     right = point - 1
                 else:
+                    # loop = loop + 1
                     left = point + 1
     loop = 0
     return -1, loop
@@ -190,31 +200,32 @@ def __assert_sorted(collection):
 """
 For testing algorithms
 """
-if __name__ == "__main__":
-    import sys
-
-    """
-        user_input = input('Enter numbers separated by comma:\n').strip()
-    collection = [int(item) for item in user_input.split(',')]
-    try:
-        __assert_sorted(collection)
-    except ValueError:
-        sys.exit('Sequence must be ascending sorted to apply interpolation search')
-    target_input = input('Enter a single number to be found in the list:\n')
-    target = int(target_input)
-        """
-
-    debug = 0
-    if debug == 1:
-        collection = [10, 30, 40, 45, 50, 66, 77, 93]
-        try:
-            __assert_sorted(collection)
-        except ValueError:
-            sys.exit("Sequence must be ascending sorted to apply interpolation search")
-        target = 67
-
-    result = interpolation_search(collection, target)
-    if result is not None:
-        print(f"{target} found at positions: {result}")
-    else:
-        print("Not found")
+#
+# if __name__ == "__main__":
+#     import sys
+#
+#     """
+#         user_input = input('Enter numbers separated by comma:\n').strip()
+#     collection = [int(item) for item in user_input.split(',')]
+#     try:
+#         __assert_sorted(collection)
+#     except ValueError:
+#         sys.exit('Sequence must be ascending sorted to apply interpolation search')
+#     target_input = input('Enter a single number to be found in the list:\n')
+#     target = int(target_input)
+#         """
+#
+#     debug = 0
+#     if debug == 1:
+#         collection = [10, 30, 40, 45, 50, 66, 77, 93]
+#         try:
+#             __assert_sorted(collection)
+#         except ValueError:
+#             sys.exit("Sequence must be ascending sorted to apply interpolation search")
+#         target = 67
+#
+#     result = interpolation_search(collection, target)
+#     if result is not None:
+#         print(f"{target} found at positions: {result}")
+#     else:
+#         print("Not found")

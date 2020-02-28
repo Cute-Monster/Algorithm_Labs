@@ -5,6 +5,7 @@ def Secventional_Search(array, value):
     for idx, element in enumerate(array):
         loop = loop + 1
         if element.salary == value:
+            loop = loop + 1
             index = idx
             return index, loop
     loop = 0

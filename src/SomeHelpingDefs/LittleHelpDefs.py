@@ -13,12 +13,11 @@ import src.SortingAlgorithms.Selection.Selection as SelS
 import src.SortingAlgorithms.Heap.Heap as HeapS
 
 
-
 def parse_data_to_array_objects(data, file_class):
     """
     Filling array of objects with data taken from file
-    :param data:
-    :param file_class:
+    :param data: data that was read from the file
+    :param file_class: class that will contain data from the line
     :return: array: [array consisting objects with data taken from file]
     """
     array = []
@@ -36,11 +35,9 @@ def parse_data_to_array_objects(data, file_class):
     return array
 
 
-
 def sorted_table_file_creator(array):
     """
-    Sorting given array of objects by salary
-    and writing this sorted array to file
+    Sorting given array of objects by salary and writing this sorted array to file
     :param array:
     :return: array: [sorted by salary]
     """
@@ -56,10 +53,10 @@ def sorted_table_file_creator(array):
 def printing_output(name, array, index, search_value):
     """
     Writing found value to the console which is colored
-    :param name:
-    :param array:
-    :param index:
-    :param search_value:
+    :param name: Algorithms name
+    :param array: array, at that was searched value
+    :param index: index of the array of found value by some algorithms
+    :param search_value: value that was searched by the algorithm
     :return:
     """
     print(colored("\n{}".format(name), "cyan") + " search result:")
@@ -79,7 +76,15 @@ def printing_output(name, array, index, search_value):
 
 
 def bst_output_print(name, item, search_value):
+    """
+    Prints output of the BST search
+    :param name: Algorithms name
+    :param item: found item of BST search algorithm
+    :param search_value: value that was searched by the algorithm
+    :return:
+    """
     print(colored("\n{}".format(name), "cyan") + " search result:")
+
     if item is None:
         print(colored("\tThere are no records with value ", "red") +
               colored("{} ".format(search_value), "green"))
@@ -96,6 +101,11 @@ def bst_output_print(name, item, search_value):
 
 
 def printing_array(array):
+    """
+    Prints given array of objects
+    :param array: array that should be printed
+    :return:
+    """
     for item in array:
         print("\t" + item.name,
               item.salary,
@@ -105,7 +115,15 @@ def printing_array(array):
 
 
 def algorithms_complexity(obj_array, bst_balanced_tree):
+    """
+    Calculating practical algorithms complexity
+    :param obj_array: array of objects
+    :param bst_balanced_tree: balanced binary tree
+    :return: array: array that contains practical complexity of algorithms
+    """
+
     complexity_array = [0, 0, 0, 0, 0]
+
     for item in obj_array:
         complexity_array[0] = complexity_array[0] + SecvS.Secventional_Search(obj_array, item.salary)[1]
         complexity_array[1] = complexity_array[1] + InterpS.interpolation_search(obj_array, item.salary)[1]
@@ -114,8 +132,8 @@ def algorithms_complexity(obj_array, bst_balanced_tree):
         BST.binaryTree.lookup(bst_balanced_tree, item.salary)
         complexity_array[4] = complexity_array[4] + BST.get_loop_counter()
 
-    for idx, item in enumerate(complexity_array):
-        print("#{} is {}".format(idx, item))
+    # for idx, item in enumerate(complexity_array):
+    #     print("#{} is {}".format(idx, item))
 
     for idx, item in enumerate(complexity_array):
         complexity_array[idx] = item/50

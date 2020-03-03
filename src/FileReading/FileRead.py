@@ -30,7 +30,7 @@
 from src.FileClass.FileClass import File
 from src.SomeHelpingDefs import LittleHelpDefs as Helpful
 import random
-from math import log, log10, log2
+from math import log, log10, log2, pow
 
 if __name__ == "__main__":
     with open("../../src/ResultTableFiles/Result", "r") as file:
@@ -106,7 +106,7 @@ if __name__ == "__main__":
     print(Helpful.colored("\nTheoretic Complexity of Algorithms:", "cyan"))
     print(
         Helpful.colored("\tSecventional search algorithm: ", "magenta") +
-        str(len(sorted_file_array)) +
+        str(len(sorted_file_array) // 2) +
         Helpful.colored("\n\tInterpolation search algorithm: ", "magenta") +
         "{:.2f}".format(log(log(len(sorted_file_array)))) +
         Helpful.colored("\n\tBinary search algorithm: ", "magenta") +
@@ -118,7 +118,7 @@ if __name__ == "__main__":
     )
 
     print(Helpful.colored("\n\t\t..... LAB 2 .....", "green"))
-    print(Helpful.colored("Step counter for each sorting algorithm", "cyan"))
+    print(Helpful.colored("Step counter for each sorting algorithm/ Practical complexity", "cyan"))
     # unsorted_file_array.sort(key=lambda x: x.salary, reverse=True)
     Bubble_sorted = Helpful.BubbleS.bubble_sort(unsorted_file_array.copy())
     print(Helpful.colored("\tBubble_sort loop counter: ", "magenta"),
@@ -153,3 +153,21 @@ if __name__ == "__main__":
     Merge_sorted = Helpful.MergeS.merge_sort(unsorted_file_array.copy())
     print(Helpful.colored("\tMerge_sort loop counter: ", "magenta"),
           Helpful.MergeS.get_loop_counter())
+
+    print(Helpful.colored("\nTheoretic Complexity of Algorithms:", "cyan"))
+    print(
+        Helpful.colored("\tBubble sort algorithm: ", "magenta") +
+        str(pow(len(sorted_file_array), 2)) +
+        Helpful.colored("\n\tHeap sort algorithm: ", "magenta") +
+        "{:.2f}".format(len(sorted_file_array) * log(len(sorted_file_array))) +
+        Helpful.colored("\n\tInsertion sort algorithm: ", "magenta") +
+        "{:.2f}".format(pow(len(sorted_file_array), 2)) +
+        Helpful.colored("\n\tMerge sort algorithm: ", "magenta") +
+        "{:.2f}".format(len(sorted_file_array) * log(len(sorted_file_array))) +
+        Helpful.colored("\n\tQuick sort algorithm: ", "magenta") +
+        "{:.2f}".format(len(sorted_file_array) * log(len(sorted_file_array))) +
+        Helpful.colored("\n\tSelection sort algorithm: ", "magenta") +
+        "{:.2f}".format(pow(len(sorted_file_array), 2)) +
+        Helpful.colored("\n\tShell sort algorithm: ", "magenta") +
+        "{:.2f}".format(pow(len(sorted_file_array), 2))
+    )

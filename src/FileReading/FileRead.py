@@ -26,11 +26,16 @@
         3: Calculating Practical complexity of the algorithm [Done]
 """
 
-
 from src.FileClass.FileClass import File
 from src.SomeHelpingDefs import LittleHelpDefs as Helpful
 import random
 from math import log, log10, log2, pow
+
+import src.ThirdLab.LinkedList.LinkedList as LinkedList
+import src.ThirdLab.LinkedList.DoubleLinkedList as DLL
+import src.ThirdLab.LinkedList.CircularLinkedList as Circular
+import src.ThirdLab.Stack.Stack as Stack
+import src.ThirdLab.Queue.Queue as Queue
 
 if __name__ == "__main__":
     with open("../../src/ResultTableFiles/Result", "r") as file:
@@ -38,7 +43,7 @@ if __name__ == "__main__":
 
     unsorted_file_array = Helpful.parse_data_to_array_objects(data, File)
     sorted_file_array = Helpful.sorted_table_file_creator(unsorted_file_array.copy())
-
+    """
     print(Helpful.colored("\t\t.....LAB 1.....", "green"))
     search_value = int(input("Enter Amount of Salary to Search --> "))
 
@@ -58,11 +63,11 @@ if __name__ == "__main__":
     BST_search_result = Helpful.BST.binaryTree.lookup(BST_balanced_tree, search_value)
     Helpful.bst_output_print("BST", BST_search_result, search_value)
     Helpful.BST.loop_counter = 0
-    """
-    Printing step counter for each algorithm with random search position
-     """
+
+    # Printing step counter for each algorithm with random search position
+
     print(Helpful.colored("\nStep counter for each algorithm with random search position", "cyan"))
-    random_element = random.randint(0, len(sorted_file_array)-1)
+    random_element = random.randint(0, len(sorted_file_array) - 1)
     print(sorted_file_array[random_element].name, sorted_file_array[random_element].salary, sep="\t")
     print("\tRandom position is " + Helpful.colored("{}".format(str(random_element)), "red") + ", with value ==> " +
           Helpful.colored("{}".format(str(sorted_file_array[random_element].salary)), "yellow"))
@@ -78,18 +83,9 @@ if __name__ == "__main__":
     Helpful.BST.binaryTree.lookup(BST_balanced_tree, sorted_file_array[random_element].salary)
     print(Helpful.colored("\t\tBST algorithm steps: ", "magenta") +
           str(Helpful.BST.get_loop_counter()))
-    #
-    # BST_balanced_tree.print_tree()
-    # print(Helpful.colored("\t\tSum of all algorithms loop counters: ", "magenta") +
-    #       "{}".format(
-    #           Helpful.FibS.FibonacciSearch(sorted_file_array, sorted_file_array[random_element].salary)[1] +
-    #           Helpful.SecvS.Secventional_Search(sorted_file_array, sorted_file_array[random_element].salary)[1] +
-    #           Helpful.BinS.binary_search(sorted_file_array, sorted_file_array[random_element].salary)[1] +
-    #           Helpful.InterpS.interpolation_search(sorted_file_array, sorted_file_array[random_element].salary)[1]
-    #       ))
-    """
-    Printing algorithms complexity
-    """
+
+    # Printing algorithms complexity
+
     algorithms_complexity = Helpful.algorithms_complexity(
         obj_array=sorted_file_array,
         bst_balanced_tree=BST_balanced_tree
@@ -171,3 +167,70 @@ if __name__ == "__main__":
         Helpful.colored("\n\tShell sort algorithm: ", "magenta") +
         "{:.2f}".format(pow(len(sorted_file_array), 2))
     )
+    """
+
+    print(Helpful.colored("\t\t.....LAB 3.....", "green"))
+    data_to_set = File(
+        name="Ghost",
+        salary=0,
+        position="Test",
+        working_years=0,
+        kids=0
+    )
+
+    circular_linked_list = Circular.CircularLinkedList()
+    linked_list = LinkedList.LinkedList()
+    double_linked_list = DLL.LinkedList()
+    stack = Stack.Stack(
+        limit=len(sorted_file_array)
+    )
+    queue = Queue.Queue()
+    double_linked_list.insertHead(sorted_file_array[0])
+    for idx, item in enumerate(sorted_file_array):
+        circular_linked_list.append(item)
+        linked_list.insert_tail(item)
+        stack.push(item)
+        queue.put(item)
+        if idx != 0:
+            double_linked_list.insertTail(item)
+
+    # queue.print()
+    # print("End Queue")
+    # items = queue.get()
+    # queue.search(9810)
+
+    # double_linked_list.display()
+    # print("End Double-LinkedList")
+    # double_linked_list.search(9811)
+    # double_linked_list.deleteHead()
+    #double_linked_list.display()
+
+
+    # circular_linked_list.print()
+    # print("END_Circular")
+    # search_circular_item = circular_linked_list.search_for_element(3054)
+    # search_circular_item.print_data()
+
+
+    # linked-list
+    # linked_list.insert_in_position(data_to_set, 3)
+    # linked_list.print_list()
+    # searched_item = linked_list.search(3383)
+    # searched_item.print_data()
+
+    # stack = Stack.Stack(
+    #     limit=len(sorted_file_array)
+    # )
+    # for item in sorted_file_array:
+    #     stack.push(item)
+    #
+    # stack.search(
+    #     search_item=int(input(
+    #         "Input salary to search -->"))
+    # )
+    # print("")
+    # stack.delete_item(
+    #     search_item=int(input(
+    #         "Input salary to delete -->"))
+    # )
+    # stack.print()

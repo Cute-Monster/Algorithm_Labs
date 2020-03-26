@@ -10,3 +10,10 @@ class File:
 
     def __getitem__(self, item):
         print("__getitem__")
+
+    def print_data(self):
+        print("\t" + self.name,
+              self.salary,
+              self.position,
+              self.working_years,
+              self.kids, sep="\t\t")

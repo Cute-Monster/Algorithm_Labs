@@ -6,13 +6,6 @@ class Node:  # create a Node
     def __repr__(self):  # string representation of a Node
         return f"Node({self.data})"
 
-    def print_data(self):
-        print("\t" + self.data.name,
-              self.data.salary,
-              self.data.position,
-              self.data.working_years,
-              self.data.kids, sep="\t\t")
-
 
 class LinkedList:
     def __init__(self):
@@ -37,7 +30,7 @@ class LinkedList:
         self.head = new_node  # make NewNode as head
         self.length += 1
 
-    def insert_in_position(self, data, insert_position):
+    def insert_in_position(self, data, insert_position) -> None:
         new_node = Node(data=data)
         prev_node, current_node = self.head, self.head
         position = 0
@@ -51,21 +44,24 @@ class LinkedList:
             current_node = current_node.next
             position += 1
 
-    def print_list(self):  # print every node data
+    def print_list(self) -> None:  # print every node data
         temp = self.head
         while temp:
-            temp.print_data()
+            temp.data.print_data()
             temp = temp.next
 
-    def search(self, search_item):  # print every node data
+    def search(self, search_item: int) -> None:  # print every node data
+        found = False
         temp = self.head
         while temp:
             if temp.data.salary == search_item:
-                return temp.data
+                temp.data.print_data()
+                found = True
+                break
             else:
                 temp = temp.next
-        print("No Value")
-        return -1
+        if not found:
+            print("No item found")
 
     def delete_head(self):  # delete from head
         temp = self.head

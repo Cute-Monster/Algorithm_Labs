@@ -13,13 +13,6 @@ class Node:
         self.data = data
         self.next_ptr = None
 
-    def print_data(self):
-        print("\t" + self.data.name,
-              self.data.salary,
-              self.data.position,
-              self.data.working_years,
-              self.data.kids, sep="\t\t")
-
 
 class CircularLinkedList:
     """
@@ -188,24 +181,25 @@ class CircularLinkedList:
         current_node = self.head
 
         while current_node.next_ptr != self.head:
-            current_node.print_data()
+            current_node.data.print_data()
             current_node = current_node.next_ptr
-        current_node.print_data()
+        current_node.data.print_data()
 
-    def search_for_element(self, search_value):
+    def search_for_element(self, search_value: int):
         current_node = self.head
-
+        found = False
         while current_node.next_ptr != self.head:
             if current_node.data.salary == search_value:
-                return current_node.data
+                current_node.data.print_data()
+                found = True
+                break
             else:
                 current_node = current_node.next_ptr
-        if current_node.data.salary == search_value:
-            return current_node.data
-        else:
+        if current_node.data.salary == search_value and not found:
+            current_node.data.print_data()
+            found = True
+        elif not found:
             print("Not Found item with this {}".format(search_value))
-            return -1
-
 
 
 if __name__ == "__main__":

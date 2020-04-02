@@ -50,6 +50,7 @@ def get_loop_counter():
     loop_counter = 0
     return counter
 
+
 def merge_sort_normal_collection(collection):
     """Pure implementation of the merge sort algorithm in Python
     :param collection: some mutable ordered collection with heterogeneous

@@ -1,4 +1,5 @@
 from termcolor import colored
+from os import path
 import src.SearchAlgorithms.Binary.Binary as BinS
 import src.SearchAlgorithms.Fibonacci.Fibonacci_Search as FibS
 import src.SearchAlgorithms.Interpolation.Interpolation as InterpS
@@ -41,7 +42,7 @@ def sorted_table_file_creator(array):
     :param array:
     :return: array: [sorted by salary]
     """
-    file = open("../ResultTableFiles/SortedFiles/SortedBySalary.txt", "w")
+    file = open("{}/SortedBySalary.txt".format(path.abspath('../ResultTableFiles/SortedFiles')), "w")
     array.sort(key=lambda x: x.salary, reverse=False)
     for item in array:
         file.writelines("{}\t\t{}\t\t{}\t\t{}\t\t{}\n".format(item.name, str(item.salary), item.position,
@@ -51,6 +52,7 @@ def sorted_table_file_creator(array):
 
 
 def printing_output(name, array, index, search_value):
+
     """
     Writing found value to the console which is colored
     :param name: Algorithms name
@@ -59,6 +61,7 @@ def printing_output(name, array, index, search_value):
     :param search_value: value that was searched by the algorithm
     :return:
     """
+
     print(colored("\n{}".format(name), "cyan") + " search result:")
     if index is -1:
         print(colored("\tThere are no records with value ", "red") +

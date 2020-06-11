@@ -1,1 +1,1 @@
-_**1st and 2nd Lab Work for Algorithms**_
+_**Lab Works on the university subject Algorithms **_

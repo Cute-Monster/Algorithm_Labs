@@ -25,13 +25,8 @@ def random_child():
     return str(random.randint(0, 3))
 
 
-if __name__ == "__main__":
-    file = open("Result", "w+")
-
-    # file.writelines("№\t\t" + "Name\t\t" + "Salary\t\t" + "Position\t\t" + "Years\t\t" + "Child\n")
-    for number in range(1, 51):
-        
-        file.writelines(random_name() + "\t\t" + random_salary() + "\t\t"
-                        + random_position() + "\t\t" + random_work() + "\t\t\t" + random_child() + "\n")
-
-    file.close()
+def main():
+    with open("Result.txt", "w+") as file:
+        for _ in range(1, 51):
+            file.writelines(random_name() + "\t\t" + random_salary() + "\t\t"
+                            + random_position() + "\t\t" + random_work() + "\t\t\t" + random_child() + "\n")

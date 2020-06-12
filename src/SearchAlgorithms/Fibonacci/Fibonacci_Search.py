@@ -7,13 +7,13 @@ return 0 if input array is empty
 """
 
 
-def FibonacciSearch(lys, val):
+def fibonacci_search(lys, val):
     """
-        >>> FibonacciSearch([1,6,7,0,0,0], 6)
+        >>> fibonacci_search([1,6,7,0,0,0], 6)
         1
-        >>> FibonacciSearch([1,-1, 5, 2, 9], 10)
+        >>> fibonacci_search([1,-1, 5, 2, 9], 10)
         -1
-        >>> FibonacciSearch([], 9)
+        >>> fibonacci_search([], 9)
         0
         """
     fibM_minus_2 = 0
@@ -51,11 +51,11 @@ def FibonacciSearch(lys, val):
 
 def FibonacciSearchNormalArray(lys, val):
     """
-        >>> FibonacciSearch([1,6,7,0,0,0], 6)
+        >>> fibonacci_search([1,6,7,0,0,0], 6)
         1
-        >>> FibonacciSearch([1,-1, 5, 2, 9], 10)
+        >>> fibonacci_search([1,-1, 5, 2, 9], 10)
         -1
-        >>> FibonacciSearch([], 9)
+        >>> fibonacci_search([], 9)
         0
         """
     loop_counter = 0

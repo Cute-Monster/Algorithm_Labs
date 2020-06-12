@@ -1,17 +1,17 @@
 from termcolor import colored
 from os import path
-import src.SearchAlgorithms.Binary.Binary as BinS
-import src.SearchAlgorithms.Fibonacci.Fibonacci_Search as FibS
-import src.SearchAlgorithms.Interpolation.Interpolation as InterpS
-import src.SearchAlgorithms.Secvent.Secventional_Search as SecvS
-import src.SearchAlgorithms.BST.BST as BST
-import src.SortingAlgorithms.Insertion.Insertion as InsS
-import src.SortingAlgorithms.Buble.Buble as BubbleS
-import src.SortingAlgorithms.Quick.Quick as QuickS
-import src.SortingAlgorithms.Merge.Merge as MergeS
-import src.SortingAlgorithms.Shell.Shell as ShellS
-import src.SortingAlgorithms.Selection.Selection as SelS
-import src.SortingAlgorithms.Heap.Heap as HeapS
+from src.SearchAlgorithms.Binary import Binary as BinS
+from src.SearchAlgorithms.Fibonacci import Fibonacci_Search as FibS
+from src.SearchAlgorithms.Interpolation import Interpolation as InterpS
+from src.SearchAlgorithms.Secvent import Secventional_Search as SecvS
+from src.SearchAlgorithms.BST import BST as BST
+from src.SortingAlgorithms.Insertion import Insertion as InsS
+from src.SortingAlgorithms.Buble import Buble as BubbleS
+from src.SortingAlgorithms.Quick import Quick as QuickS
+from src.SortingAlgorithms.Merge import Merge as MergeS
+from src.SortingAlgorithms.Shell import Shell as ShellS
+from src.SortingAlgorithms.Selection import Selection as SelS
+from src.SortingAlgorithms.Heap import Heap as HeapS
 
 
 def parse_data_to_array_objects(data, file_class):
@@ -42,12 +42,12 @@ def sorted_table_file_creator(array):
     :param array:
     :return: array: [sorted by salary]
     """
-    file = open("{}/SortedBySalary.txt".format(path.abspath('../ResultTableFiles/SortedFiles')), "w")
-    array.sort(key=lambda x: x.salary, reverse=False)
-    for item in array:
-        file.writelines("{}\t\t{}\t\t{}\t\t{}\t\t{}\n".format(item.name, str(item.salary), item.position,
-                                                              str(item.working_years), str(item.kids)))
-    file.close()
+    with open("{}/SortedBySalary.txt".format(path.abspath('ResultTableFiles/SortedFiles')), "w") as file:
+        array.sort(key=lambda x: x.salary, reverse=False)
+        for item in array:
+            file.writelines("{}\t\t{}\t\t{}\t\t{}\t\t{}\n".format(item.name, str(item.salary), item.position,
+                                                                  str(item.working_years), str(item.kids)))
+
     return array
 
 
@@ -131,8 +131,8 @@ def algorithms_complexity(obj_array, bst_balanced_tree):
         complexity_array[0] = complexity_array[0] + SecvS.Secventional_Search(obj_array, item.salary)[1]
         complexity_array[1] = complexity_array[1] + InterpS.interpolation_search(obj_array, item.salary)[1]
         complexity_array[2] = complexity_array[2] + BinS.binary_search(obj_array, item.salary)[1]
-        complexity_array[3] = complexity_array[3] + FibS.FibonacciSearch(obj_array, item.salary)[1]
-        BST.binaryTree.lookup(bst_balanced_tree, item.salary)
+        complexity_array[3] = complexity_array[3] + FibS.fibonacci_search(obj_array, item.salary)[1]
+        BST.BinaryTree.lookup(bst_balanced_tree, item.salary)
         complexity_array[4] = complexity_array[4] + BST.get_loop_counter()
 
     # for idx, item in enumerate(complexity_array):

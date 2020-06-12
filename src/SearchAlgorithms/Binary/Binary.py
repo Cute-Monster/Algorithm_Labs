@@ -316,7 +316,7 @@ def __assert_sorted(collection):
     return True
 
 
-"""
+""" DEBUG 
 if __name__ == "__main__":
     import sys
 

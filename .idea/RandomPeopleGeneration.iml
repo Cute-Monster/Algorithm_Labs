@@ -3,10 +3,12 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/ASDCvenv" />
+      <excludeFolder url="file://$MODULE_DIR$/Algvenv" />
+      <excludeFolder url="file://$MODULE_DIR$/src/Attest" />
       <excludeFolder url="file://$MODULE_DIR$/src/Testing" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.7 (ASDCvenv)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.7 (RandomPeopleGeneration)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

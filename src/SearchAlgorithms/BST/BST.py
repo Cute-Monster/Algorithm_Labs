@@ -1,9 +1,7 @@
 loop_counter = 0
 
 
-class binaryTree(object):
-    # Reference: Structure and node naming convention came from edx.org's mitX MOOC course 6.00.1x slides taught by
-    # professor Eric Grimson, Fall 2013.
+class BinaryTree(object):
     def __init__(self, value):
         self.value = value
         self.leftBranch = None
@@ -35,18 +33,17 @@ class binaryTree(object):
         """
         Insert new node with data key set to value
         Return inserted node object to caller, or None if node not inserted (when node was already present)
-        Modified from reference: http://www.laurentluce.com/posts/binary-search-tree-library-in-python/
         """
         if value < self.value.salary:
             if self.getLeftBranch() is None:
-                self.setLeftBranch(binaryTree(value))
+                self.setLeftBranch(BinaryTree(value))
                 self.getLeftBranch().setParent(self)
                 return self.getLeftBranch()
             else:
                 return self.getLeftBranch().insert(value)
         elif value > self.value.salary:
             if self.getRightBranch() is None:
-                self.setRightBranch(binaryTree(value))
+                self.setRightBranch(BinaryTree(value))
                 self.getRightBranch().setParent(self)
                 return self.getRightBranch()
             else:
@@ -56,29 +53,27 @@ class binaryTree(object):
         """
         Lookup node containing data key set to value
         Returns node object to caller, or None if not found
-        Modified from reference: http://www.laurentluce.com/posts/binary-search-tree-library-in-python/
         """
         global loop_counter
-        loop_counter = loop_counter + 1
+        loop_counter += 1
         if value < self.value.salary:
-            loop_counter = loop_counter + 1
+            loop_counter += 1
             if self.getLeftBranch() is None:
                 return None
             return self.getLeftBranch().lookup(value)
         elif value > self.value.salary:
-            loop_counter = loop_counter + 1
+            loop_counter += 1
             if self.getRightBranch() is None:
                 return None
             return self.getRightBranch().lookup(value)
         else:
-            loop_counter = loop_counter + 1
+            loop_counter += 1
             return self
 
     def delete(self, value):
         """
         Delete node containing data key set to value
         Returns status text message
-        Modified from reference: http://www.laurentluce.com/posts/binary-search-tree-library-in-python/
         """
         # get node containing value and its number of children | or return with node not found message
         node = self.lookup(value)
@@ -119,8 +114,8 @@ class binaryTree(object):
                 parent.setLeftBranch(successor.getRightBranch())
             else:
                 parent.setRightBranch(successor.getRightBranch())
-        childMessageFrag = ("no children", "1 child", "2 children")
-        return "Node " + str(value) + " has " + str(childMessageFrag[children_count]) + " and was successfully deleted"
+        child_message_frag = ("no children", "1 child", "2 children")
+        return f"Node {str(value)} has {str(child_message_frag[children_count])} and was successfully deleted"
 
     def children_count(self, node):
         """
@@ -211,18 +206,12 @@ def buildBalancedTree(sortedList, start, end):
             
     Note:
         The sortedList list is destroyed during the process.
-        
-    References:
-        The original python implementation used a sorted "linked" list found here:
-            http://leetcode.com/2010/11/convert-sorted-list-to-balanced-binary.html
-        Based on an original solution in C found here: 
-            http://leetcode.com/2010/11/convert-sorted-list-to-balanced-binary.html
     """
     if start >= end:
         return None
     middle = (start + end) // 2
     node = buildBalancedTree(sortedList, start, middle)
-    root = binaryTree(sortedList.pop(0))
+    root = BinaryTree(sortedList.pop(0))
     root.setLeftBranch(node)
     if root.getLeftBranch():
         root.getLeftBranch().setParent(root)
@@ -237,7 +226,7 @@ def buildUnbalancedTree(unsortedList, rootValue):
     Build an unbalanced binary search tree
     Input: An unsorted list of key values to generate a tree, 
            The root key value, a member of the unsortedList.         
-    Output: rootNode when rootValue was found in unsortedList, otherwise return None.           
+    Output: root_node when rootValue was found in unsortedList, otherwise return None.
                          
     Notes:
         The unsortedList list is destroyed during the process.
@@ -246,10 +235,10 @@ def buildUnbalancedTree(unsortedList, rootValue):
     """
     if rootValue not in unsortedList:
         return None
-    rootIndex = unsortedList.index(rootValue)
-    rootNode = binaryTree(unsortedList[rootIndex])
-    unsortedList.remove(unsortedList[rootIndex])
+    root_index = unsortedList.index(rootValue)
+    root_node = BinaryTree(unsortedList[root_index])
+    unsortedList.remove(unsortedList[root_index])
     while len(unsortedList):
-        rootNode.insert(unsortedList[0])
+        root_node.insert(unsortedList[0])
         unsortedList.remove(unsortedList[0])
-    return rootNode
+    return root_node
